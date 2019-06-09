@@ -54,12 +54,12 @@ public class SearchState {
 	
 	private void setupH1(Formula formula) {
 		if ( this.searchFormula != formula ) this.searchFormula = formula;
-		this.h1 = formula.unsatisfiedClausesCount(this);
+		this.h1 = formula.unsatisfiedClausesByStateCount(this);
 	}
 	
 	private void setupH2(Formula formula) {
 		if ( this.searchFormula != formula ) this.searchFormula = formula;
-		this.h2 = formula.unsatisfiedClausesCount(this) + this.variables.size();
+		this.h2 = formula.unsatisfiedClausesByStateCount(this) + this.variables.size();
 	}
 	
 	public String toString() {

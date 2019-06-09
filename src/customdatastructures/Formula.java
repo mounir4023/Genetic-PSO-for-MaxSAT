@@ -25,7 +25,7 @@ public class Formula {
 		return clauses;
 	}
 	
-	private Formula unsatisfiedClauses ( SearchState state ) {
+	private Formula unsatisfiedClausesByState ( SearchState state ) {
 		
 		if(state.isEmpty()) return this;
 		
@@ -55,12 +55,23 @@ public class Formula {
 		return remainingClauses;
 	}
 	
-	public int unsatisfiedClausesCount ( SearchState state ) {
-		return this.unsatisfiedClauses(state).getClauses().size();
+	public int unsatisfiedClausesByStateCount ( SearchState state ) {
+		return this.unsatisfiedClausesByState(state).getClauses().size();
 	}
 	
 	public boolean satisfiedByState ( SearchState state ) { 
-		return this.unsatisfiedClausesCount(state) == 0;
+		return this.unsatisfiedClausesByStateCount(state) == 0;
+	}
+	
+	public int satisfiedClausesBySolutionCount ( List<Integer> solution ) {
+		
+		int count = 0;
+		
+		for ( Clause c : this.clauses ) {
+			if ( c.satisfiedBy(solution) ) count ++;
+		}
+		
+		return count;
 	}
 	
 	public boolean satisfiedBySolution ( List<Integer> solution ) {

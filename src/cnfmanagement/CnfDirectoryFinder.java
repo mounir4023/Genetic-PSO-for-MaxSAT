@@ -14,6 +14,7 @@ public class CnfDirectoryFinder {
 	public CnfDirectoryFinder(String path) {
 		super();
 		this.path = path;
+		this.collectCnfFiles();
 	}
 	
 	public void collectCnfFiles() {
@@ -30,6 +31,18 @@ public class CnfDirectoryFinder {
 		}
 		
 		this.readers = list;
+	}
+	
+	public void listFiles() {
+		
+		File folder = new File(this.path);
+		File[] listOfFiles = folder.listFiles();
+		
+		for (int i = 0; i < listOfFiles.length; i++) {
+		  if (listOfFiles[i].isFile() && listOfFiles[i].toString().endsWith(".cnf")) {
+		    System.out.println(listOfFiles[i].getName());
+		  } 
+		}
 	}
 	
 	public List<CnfReader> getReaders() {

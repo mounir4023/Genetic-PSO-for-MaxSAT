@@ -6,10 +6,22 @@ import java.io.IOException;
 import blindsearch.AStar;
 import blindsearch.BFS;
 import blindsearch.DFS;
+import cnfmanagement.CnfDirectoryFinder;
+import cnfmanagement.CnfReader;
+import cnfmanagement.Dataset;
+import geneticalgorithm.GA;
 
 public class Main {
 	
 	public static void main(String args[]) throws IOException {
+		
+		//System.out.println(Dataset.UF20.get_path());
+		
+		//CnfDirectoryFinder cdf = new CnfDirectoryFinder(Dataset.UF20.get_path());
+		//cdf.listFiles();
+			
+		GA test = new GA();
+		test.solve();
 		
 		// PART 1 TEST 
 		//CnfDirectoryFinder finder = new CnfDirectoryFinder("/home/mounir4023/Developpement/testing/java/SATSolver/materials/Dataset1/");
@@ -40,8 +52,8 @@ public class Main {
 		//BFS BFSTest = new BFS("/home/mounir4023/Developpement/testing/java/SATSolver/materials/Dataset1/uf20-01.cnf",20);
 		//BFSTest.search();
 		
-		AStar AStarTest = new AStar("/home/mounir4023/Developpement/testing/java/SATSolver/materials/Dataset1/uf20-01.cnf",20);
-		AStarTest.search();
+		//AStar AStarTest = new AStar("/home/mounir4023/Developpement/testing/java/SATSolver/materials/Dataset1/uf20-01.cnf",20);
+		//AStarTest.search();
 		
 	}
 
