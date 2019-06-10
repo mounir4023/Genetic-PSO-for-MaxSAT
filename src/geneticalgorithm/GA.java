@@ -11,21 +11,21 @@ public class GA {
 	private Dataset dataset;
 	private Formula formula;
 	private Population population;
-	private int pop_size = 1000;
-	private int max_iter = 50; 
-	private int crossover_rate = 100; 
-	private int mutation_rate = 50;
+	private int pop_size;
+	private int max_iter; 
+	private int crossover_rate; 
+	private int mutation_rate;
 	
 	public GA () throws IOException {
 	
 		this.dataset = Dataset.UF20;
-		this.formula = new CnfReader(Dataset.UF20.get_path()+"/"+"uf20-01.cnf").readFormula();
-		this.population = new Population(this);
-		this.population.init_population();
+		this.formula = new CnfReader(Dataset.UF20.get_path()+"/"+"uf20-01000.cnf").readFormula();
 		this.pop_size = 1000;
 		this.max_iter = 100; 
-		this.crossover_rate = 10; 
+		this.crossover_rate = 20; 
 		this.mutation_rate = 20; 
+		this.population = new Population(this);
+		this.population.init_population();
 	}
 	
 	public void solve() {
