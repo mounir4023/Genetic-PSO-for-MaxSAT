@@ -16,22 +16,24 @@ public class GA {
 	private int crossover_rate = 30; 
 	private int mutation_rate = 10;
 	
-	public GA () throws IOException {
+	public GA () throws IOException { //System.out.println("GA constructor");
+	
 		this.dataset = Dataset.UF20;
 		this.formula = new CnfReader(Dataset.UF20.get_path()+"/"+"uf20-01000.cnf").readFormula();
 		this.population = new Population(this);
+		this.population.init_population();
 		this.pop_size = 100;
 		this.max_iter = 50; 
 		this.crossover_rate = 50; 
 		this.mutation_rate = 20; 
 	}
 	
-	public void solve() {
+	public void solve() { System.out.println("GA solve");
 		
 		int iteration = 0;
 		Individual solution = null;
 		
-		while ( iteration < max_iter && solution == null ) {
+		while ( iteration < max_iter && solution == null ) { System.out.println("iter n°"+iteration);
 			
 			Population new_borns = new Population(this);
 			

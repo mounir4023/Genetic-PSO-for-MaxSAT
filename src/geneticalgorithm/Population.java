@@ -10,16 +10,15 @@ public class Population {
 	private GA configuration;
 	private ArrayList<Individual> list;
 	
-	public Population(GA configuration) {
+	public Population(GA configuration) { //System.out.println("population constructor");
 		
 		this.configuration = configuration;
 		this.list = new ArrayList<Individual> ();
-		this.init_population();
 	}
 	
-	private void init_population() {
+	public void init_population() { //System.out.println("population random init");
 		
-		for( int i=0; i< this.configuration.get_pop_size() ; i++ ) {
+		for( int i=0; i< this.configuration.get_pop_size() ; i++ ) { System.out.println("random individual n°"+i);
 			
 			Individual individual = new Individual(this.configuration.get_dataset().get_nb_vars());
 			this.register(individual);
@@ -33,7 +32,7 @@ public class Population {
 		return this.list.get(index);
 	}
 	
-	public void register(Individual new_born) {
+	public void register(Individual new_born) { //System.out.println("register individual");
 		
 		Formula formula = this.configuration.get_formula();
 		boolean registered = false;
@@ -41,13 +40,16 @@ public class Population {
 		int nb_fitness = new_born.fitness(formula);
 		int fitness_rank = 0;
 		
-		while(fitness_rank < this.list.size() && ! registered ) {
+		while(fitness_rank < this.list.size() && ! registered ) { //System.out.println(fitness_rank);
 			
 			int compared_fitness = this.list.get(fitness_rank).fitness(formula);
 			
 			if (nb_fitness >= compared_fitness) {
+				
 				this.list.add(fitness_rank, new_born);
 				registered = true;
+			} else {
+				fitness_rank++;
 			}
 		}
 		

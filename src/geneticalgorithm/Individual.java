@@ -10,14 +10,14 @@ public class Individual {
 	private int genes_count;
 	
 	// constructor to  generate random chromosome
-	public Individual(int genes_count) {
+	public Individual(int genes_count) { 
 		
 		this.chromosome = new ArrayList<Integer>();
 		this.genes_count = genes_count;
 		
 		for ( int i = 0; i < this.genes_count ; i++ ) {
 			chromosome.add((int)(Math.round( Math.random() )));
-		}
+		} 
 	}
 	
 	// constructor to generate by crossover
@@ -40,7 +40,7 @@ public class Individual {
 	}
 	
 	// fitness function towards a given formula
-	public int fitness( Formula formula ) {
+	public int fitness( Formula formula ) { 
 		return formula.satisfiedClausesBySolutionCount(this.chromosome);
 	}
 	
