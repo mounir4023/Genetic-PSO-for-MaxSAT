@@ -15,13 +15,15 @@ public class Main {
 	
 	public static void main(String args[]) throws IOException {
 		
+		
+		GA test = new GA();
+		test.solve();
+		
 		//System.out.println(Dataset.UF20.get_path());
 		
 		//CnfDirectoryFinder cdf = new CnfDirectoryFinder(Dataset.UF20.get_path());
 		//cdf.listFiles();
-			
-		GA test = new GA();
-		test.solve();
+					
 		
 		// PART 1 TEST 
 		//CnfDirectoryFinder finder = new CnfDirectoryFinder("/home/mounir4023/Developpement/testing/java/SATSolver/materials/Dataset1/");
