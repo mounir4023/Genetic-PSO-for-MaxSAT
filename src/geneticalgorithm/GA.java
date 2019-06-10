@@ -11,7 +11,7 @@ public class GA {
 	private Dataset dataset;
 	private Formula formula;
 	private Population population;
-	private int pop_size = 10000;
+	private int pop_size = 1000;
 	private int max_iter = 50; 
 	private int crossover_rate = 100; 
 	private int mutation_rate = 50;
@@ -56,6 +56,8 @@ public class GA {
 				Individual mutated = population.anybody();
 				mutated.mutate();
 			}
+			
+			this.population.reorder();
 			
 			this.population.top_five(this.formula);
 			iteration++;

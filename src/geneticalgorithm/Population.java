@@ -1,11 +1,13 @@
 package geneticalgorithm;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 import customdatastructures.Formula;
 
-public class Population {
+public class Population implements Comparator<Individual> {
 
 	private GA configuration;
 	private ArrayList<Individual> list;
@@ -32,7 +34,7 @@ public class Population {
 		return this.list.get(index);
 	}
 	
-	public void register(Individual new_born) {
+	public void register(Individual new_born) { 
 		
 		Formula formula = this.configuration.get_formula();
 		boolean registered = false;
@@ -56,6 +58,10 @@ public class Population {
 		if ( ! registered ) this.list.add(fitness_rank, new_born);	
 	}
 	
+	private int evaluate (Individual individual ) {
+		return individual.fitness(this.configuration.get_formula());
+	}
+	
 	public void merge(Population new_borns) { 
 
 		int last_index = this.list.size() - 1 ; 
@@ -69,6 +75,10 @@ public class Population {
 		} 
 	}
 	
+	public void reorder() {
+		Collections.sort(this.list,this);	
+	}
+	
 	public ArrayList<Individual> get_list() {
 		return this.list;
 	}
@@ -79,6 +89,11 @@ public class Population {
 		System.out.println(this.list.get(2)); System.out.println(this.list.get(2).fitness(formula));
 		System.out.println(this.list.get(3)); System.out.println(this.list.get(3).fitness(formula));
 		System.out.println(this.list.get(4)); System.out.println(this.list.get(4).fitness(formula));
+	}
+	
+	@Override
+	public int compare(Individual i1, Individual i2) {
+		return evaluate(i2)-evaluate(i1);
 	}
 	
 }
