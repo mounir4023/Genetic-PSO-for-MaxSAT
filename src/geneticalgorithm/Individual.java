@@ -1,6 +1,7 @@
 package geneticalgorithm;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import customdatastructures.Formula;
 
@@ -36,6 +37,19 @@ public class Individual {
 		while ( gene_index < this.genes_count ) {
 			this.chromosome.add(parent2.get_gene(gene_index));
 			gene_index++;
+		}
+	}
+	
+	public void mutate () {
+		
+		Random generator = new Random();
+		int nb_mutations = generator.nextInt(5) +1 ;
+		
+		for ( int i=0; i< nb_mutations ; i++) {
+			int mutated_gene = generator.nextInt(this.chromosome.size());
+			int new_gene = this.chromosome.remove(mutated_gene);
+			new_gene = ( new_gene +1 ) % 2 ;
+			this.chromosome.add(mutated_gene, new_gene);
 		}
 	}
 	

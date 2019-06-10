@@ -19,7 +19,7 @@ public class GA {
 	public GA () throws IOException {
 	
 		this.dataset = Dataset.UF20;
-		this.formula = new CnfReader(Dataset.UF20.get_path()+"/"+"uf20-01000.cnf").readFormula();
+		this.formula = new CnfReader(Dataset.UF20.get_path()+"/"+"uf20-01.cnf").readFormula();
 		this.population = new Population(this);
 		this.population.init_population();
 		this.pop_size = 1000;
@@ -53,7 +53,8 @@ public class GA {
 
 			for ( int mutation_count = 0 ; mutation_count < pop_size * mutation_rate / 100; mutation_count++ ) {
 				
-				
+				Individual mutated = population.anybody();
+				mutated.mutate();
 			}
 			
 			this.population.top_five(this.formula);
