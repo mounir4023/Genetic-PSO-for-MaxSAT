@@ -18,8 +18,8 @@ public class GA {
 	
 	public GA () throws IOException {
 	
-		this.dataset = Dataset.UF20;
-		this.formula = new CnfReader(Dataset.UF20.get_path()+"/"+"uf20-01000.cnf").readFormula();
+		this.dataset = Dataset.UF50;
+		this.formula = new CnfReader(Dataset.UF50.get_path()+"/"+"uf50-01000.cnf").readFormula();
 		this.pop_size = 1000;
 		this.max_iter = 100; 
 		this.crossover_rate = 20; 
