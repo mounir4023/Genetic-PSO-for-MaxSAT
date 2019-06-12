@@ -46,9 +46,13 @@ public class Individual {
 	public Individual clone() {
 		
 		Individual copy = new Individual(this.genes_count);
+		
 		for ( int i = 0; i< this.genes_count; i++) {
 			copy.get_chromosome().set(i,this.chromosome.get(i));
 		}
+		
+		copy.set_l_formula(last_formula);
+		copy.set_l_fitness(last_fitness);
 		
 		return copy;
 	}
@@ -70,13 +74,14 @@ public class Individual {
 	// fitness function towards a given formula
 	public int fitness( Formula formula ) { 
 		
-		if ( last_formula == formula ) 
+		if ( this.last_formula == formula ) 
 			return last_fitness;
 		else {
-			last_formula = formula;
-			last_fitness = formula.satisfiedClausesBySolutionCount(this.chromosome); 
+			this.last_formula = formula;
+			this.last_fitness = formula.satisfiedClausesBySolutionCount(this.chromosome); 
 			return this.last_fitness;
-		}
+		} 
+		//return formula.satisfiedClausesBySolutionCount(this.chromosome);
 	}
 	
 	// tells if this has better fitness than a rival towards a given formula
@@ -94,6 +99,14 @@ public class Individual {
 	
 	public void set_gene(int index, int value) {
 		this.chromosome.set(index, value);
+	}
+	
+	public void set_l_formula ( Formula formula ) {
+		this.last_formula = formula;
+	}
+	
+	public void set_l_fitness ( int fitness ) {
+		this.last_fitness = fitness;
 	}
 	
 	public ArrayList<Integer> get_chromosome() {

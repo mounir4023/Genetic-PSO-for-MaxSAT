@@ -91,6 +91,8 @@ public class GA {
 				solution = this.population.get_list().get(0);
 			else
 				iteration++;
+			
+			//new java.util.Scanner(System.in).nextLine();
 		}
 	}
 	
