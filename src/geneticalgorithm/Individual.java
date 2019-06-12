@@ -9,6 +9,8 @@ public class Individual {
 
 	private ArrayList<Integer> chromosome;
 	private int genes_count;
+	private int last_fitness = 0;
+	private Formula last_formula = null;
 	
 	// constructor to  generate random chromosome
 	public Individual(int genes_count) { 
@@ -67,7 +69,14 @@ public class Individual {
 	
 	// fitness function towards a given formula
 	public int fitness( Formula formula ) { 
-		return formula.satisfiedClausesBySolutionCount(this.chromosome);
+		
+		if ( last_formula == formula ) 
+			return last_fitness;
+		else {
+			last_formula = formula;
+			last_fitness = formula.satisfiedClausesBySolutionCount(this.chromosome); 
+			return this.last_fitness;
+		}
 	}
 	
 	// tells if this has better fitness than a rival towards a given formula
