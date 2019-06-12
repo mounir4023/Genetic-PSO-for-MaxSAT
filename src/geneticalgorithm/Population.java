@@ -50,9 +50,8 @@ public class Population implements Comparator<Individual> {
 				
 				this.list.add(fitness_rank, new_born);
 				registered = true;
-			} else {
-				fitness_rank++;
-			}
+				
+			} else  fitness_rank++;
 		}
 		
 		if ( ! registered ) this.list.add(fitness_rank, new_born);	
@@ -83,12 +82,16 @@ public class Population implements Comparator<Individual> {
 		return this.list;
 	}
 	
+	public Individual get_best() {
+		return this.list.get(0);
+	}
+	
 	public void top_five(Formula formula) {
-		System.out.println(this.list.get(0)); System.out.println(this.list.get(0).fitness(formula));
-		System.out.println(this.list.get(1)); System.out.println(this.list.get(1).fitness(formula));
-		System.out.println(this.list.get(2)); System.out.println(this.list.get(2).fitness(formula));
-		System.out.println(this.list.get(3)); System.out.println(this.list.get(3).fitness(formula));
-		System.out.println(this.list.get(4)); System.out.println(this.list.get(4).fitness(formula));
+		System.out.println(this.list.get(0)+" / "+this.configuration.get_nb_clauses()); System.out.println(this.list.get(0).fitness(formula));
+		System.out.println(this.list.get(1)+" / "+this.configuration.get_nb_clauses()); System.out.println(this.list.get(1).fitness(formula));
+		System.out.println(this.list.get(2)+" / "+this.configuration.get_nb_clauses()); System.out.println(this.list.get(2).fitness(formula));
+		System.out.println(this.list.get(3)+" / "+this.configuration.get_nb_clauses()); System.out.println(this.list.get(3).fitness(formula));
+		System.out.println(this.list.get(4)+" / "+this.configuration.get_nb_clauses()); System.out.println(this.list.get(4).fitness(formula));
 	}
 	
 	@Override

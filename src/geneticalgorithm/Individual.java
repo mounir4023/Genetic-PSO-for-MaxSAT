@@ -40,10 +40,22 @@ public class Individual {
 		}
 	}
 	
+	// creates a duplicate copy of this individual
+	public Individual clone() {
+		
+		Individual copy = new Individual(this.genes_count);
+		for ( int i = 0; i< this.genes_count; i++) {
+			copy.get_chromosome().set(i,this.chromosome.get(i));
+		}
+		
+		return copy;
+	}
+	
+	// randomly swap 0 and 1, between 1 and 10 genes
 	public void mutate () {
 		
 		Random generator = new Random();
-		int nb_mutations = generator.nextInt(5) +1 ;
+		int nb_mutations = generator.nextInt(10) +1 ;
 		
 		for ( int i=0; i< nb_mutations ; i++) {
 			int mutated_gene = generator.nextInt(this.chromosome.size());
@@ -58,12 +70,25 @@ public class Individual {
 		return formula.satisfiedClausesBySolutionCount(this.chromosome);
 	}
 	
+	// tells if this has better fitness than a rival towards a given formula
+	public boolean better_than( Individual rival, Formula formula) {
+		return this.fitness(formula) >= rival.fitness(formula);
+	}
+	
 	public int get_genes_count() {
 		return this.genes_count;
 	}
 	
 	public int get_gene(int index) {
 		return this.chromosome.get(index);
+	}
+	
+	public void set_gene(int index, int value) {
+		this.chromosome.set(index, value);
+	}
+	
+	public ArrayList<Integer> get_chromosome() {
+		return this.chromosome;
 	}
 	
 	public String toString() {
