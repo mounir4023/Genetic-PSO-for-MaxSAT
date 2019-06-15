@@ -42,7 +42,7 @@ public class GA {
 		Individual best = null;
 		
 		// core of the evolution
-		while ( iteration < max_iter && solution == null ) { System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
+		while ( iteration < max_iter && solution == null ) { 
 			
 			// temporary store the new individuals from the crossover
 			Population new_borns = new Population(this);
@@ -83,6 +83,7 @@ public class GA {
 				this.population.register(best);				
 			
 			// print iteration score
+			System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
 			this.population.top_five(this.formula);
 			System.out.println("\nbest fitness: "+best.fitness(formula));
 			

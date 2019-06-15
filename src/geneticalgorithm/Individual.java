@@ -59,16 +59,14 @@ public class Individual {
 	
 	// randomly swap 0 and 1, between 1 and 10 genes
 	public void mutate () {
-		
+
 		Random generator = new Random();
-		int nb_mutations = generator.nextInt(10) +1 ;
+		int mutated_gene = generator.nextInt(this.chromosome.size());
 		
-		for ( int i=0; i< nb_mutations ; i++) {
-			int mutated_gene = generator.nextInt(this.chromosome.size());
-			int new_gene = this.chromosome.remove(mutated_gene);
-			new_gene = ( new_gene +1 ) % 2 ;
-			this.chromosome.add(mutated_gene, new_gene);
-		}
+		int new_gene = this.chromosome.remove(mutated_gene);
+		new_gene = ( new_gene +1 ) % 2 ;
+		
+		this.chromosome.add(mutated_gene, new_gene);
 	}
 	
 	// fitness function towards a given formula
