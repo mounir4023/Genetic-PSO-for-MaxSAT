@@ -36,7 +36,7 @@ public class GA {
 	
 	public void solve() {
 		
-		// init the algorithm
+		// initialize the algorithm
 		int iteration = 0;
 		Individual solution = null;
 		Individual best = null;
@@ -56,7 +56,7 @@ public class GA {
 				Individual child1 = new Individual(parent1,parent2);
 				Individual child2 = new Individual(parent2,parent1);
 				
-				new_borns.get_list().add(0,child1);
+				new_borns.get_list().add(0,child1); 
 				new_borns.get_list().add(0,child2);
 			} 
 			
@@ -72,6 +72,10 @@ public class GA {
 				Individual mutated = population.anybody();
 				mutated.mutate();
 			}
+			
+			// calculate standard deviation
+			// if premature convergence start the social disaster technique
+			// keep up few good samples and randomize all the others
 			
 			// sort the population after the mutations
 			this.population.reorder();
@@ -93,7 +97,6 @@ public class GA {
 			else
 				iteration++;
 			
-			//new java.util.Scanner(System.in).nextLine();
 		}
 	}
 	

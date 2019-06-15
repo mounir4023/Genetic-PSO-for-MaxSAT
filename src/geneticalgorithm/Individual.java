@@ -31,7 +31,10 @@ public class Individual {
 		
 		int gene_index = 0;
 		
-		while ( gene_index < this.genes_count/2 + 1 ) {
+		/* CHANGE CR TO RANDOM NOT HALF */
+		int genes_border = this.genes_count/2 + 1;
+		
+		while ( gene_index < genes_border ) {
 			this.chromosome.add(parent1.get_gene(gene_index));
 			gene_index++;
 		}
