@@ -39,7 +39,7 @@ public class GA {
 		
 		// initialize the algorithm
 		int iteration = 0;
-		double stagnation_indicator = 0;
+		double stagnation_indicator = 5;
 		Individual solution = null;
 		Individual best = null;
 		
@@ -79,21 +79,23 @@ public class GA {
 			this.population.reorder();
 			
 			// watch over premature convergence and handle population in case
-			double old_indicator = stagnation_indicator;
-			double tmp_indicator = this.standard_deviation();
-			
-			if ( stagnation_indicator < 0.05 ) 
+			stagnation_indicator = this.standard_deviation();
+			if ( stagnation_indicator < 1 ) 
 				this.population.social_disaster(); 
 			
 			stagnation_indicator = this.standard_deviation();
+			
+			// restore the best individual if it got worse due to some mutation
+			if ( this.population.get_best().better_than(best, formula) )
+				best = this.population.get_best().clone();
+			else
+				this.population.register(best);	
 			
 			// print iteration score
 			System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
 			this.population.top_five(this.formula);
 			System.out.println("\nbest fitness: "+best.fitness(formula));
-			System.out.println("\nprevious iter indicator: "+old_indicator);
-			System.out.println("\ncurrent indicator: "+tmp_indicator);
-			System.out.println("\nci after disaster: "+stagnation_indicator);
+			System.out.println("\nindicator: "+stagnation_indicator);
 			try { Thread.sleep(333); } catch (InterruptedException e) { }
 			
 			// check if a solution was found, else repeat
@@ -101,17 +103,9 @@ public class GA {
 				solution = this.population.get_list().get(0);
 			else
 				iteration++;
-			
 		}
 	}
 	
-	/*
-	// restore the best individual if it got worse due to some mutation
-	if ( this.population.get_best().better_than(best, formula) )
-		best = this.population.get_best().clone();
-	else
-		this.population.register(best);				
-	*/
 	private double standard_deviation() {
 		
 		double sum = 0;

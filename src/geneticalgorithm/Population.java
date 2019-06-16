@@ -20,7 +20,7 @@ public class Population implements Comparator<Individual> {
 	
 	public void init_population() { 
 		
-		for( int i=0; i< this.configuration.get_pop_size() ; i++ ) {
+		for( int i=0; i < this.configuration.get_pop_size() ; i++ ) {
 			
 			Individual individual = new Individual(this.configuration.get_dataset().get_nb_vars());
 			this.register(individual);
@@ -78,12 +78,24 @@ public class Population implements Comparator<Individual> {
 		
 		System.out.println("/* SOCIAL DISASTER */");
 		
+		/* implementation 2 : randomize again all pop except the best 1 
+		Individual best = this.get_best().clone();
+		this.list = new ArrayList<Individual>();
+		this.init_population();
+		this.reorder();
+		this.register(best);
+		*/
+		
+		/* implementation 1 : get complete opposite of random elements (failed)
 		for ( int i = 0; i < configuration.get_pop_size() / 2; i++ ) {
 		
 			Random generator = new Random();
 			int index = generator.nextInt(configuration.get_pop_size());
 			this.list.get(index).punish();
 		}
+		*/
+		System.out.println("/* SOCIAL DISASTER */");
+		new java.util.Scanner(System.in).nextLine();
 	}
 	
 	public void reorder() {

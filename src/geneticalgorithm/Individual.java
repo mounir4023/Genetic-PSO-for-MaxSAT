@@ -70,6 +70,7 @@ public class Individual {
 		new_gene = ( new_gene +1 ) % 2 ;
 		
 		this.chromosome.add(mutated_gene, new_gene);
+		this.reset_fitness();
 	}
 	
 	// swap all the genes to get the complete opposite of this individual
