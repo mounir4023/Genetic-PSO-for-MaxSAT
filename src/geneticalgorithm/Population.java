@@ -74,6 +74,18 @@ public class Population implements Comparator<Individual> {
 		} 
 	}
 	
+	public void social_disaster() {
+		
+		System.out.println("/* SOCIAL DISASTER */");
+		
+		for ( int i = 0; i < configuration.get_pop_size() / 2; i++ ) {
+		
+			Random generator = new Random();
+			int index = generator.nextInt(configuration.get_pop_size());
+			this.list.get(index).punish();
+		}
+	}
+	
 	public void reorder() {
 		Collections.sort(this.list,this);	
 	}

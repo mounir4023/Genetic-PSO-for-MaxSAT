@@ -72,6 +72,19 @@ public class Individual {
 		this.chromosome.add(mutated_gene, new_gene);
 	}
 	
+	// swap all the genes to get the complete opposite of this individual
+	public void punish () {
+		
+		for (int i = 0; i < this.genes_count; i++ ) {
+			
+			int new_gene = this.chromosome.get(i);
+			new_gene = ( new_gene+1 ) % 2;
+			this.chromosome.set(i, new_gene);
+		}
+		
+		this.reset_fitness();
+	}
+	
 	// fitness function towards a given formula
 	public int fitness( Formula formula ) { 
 		
@@ -88,6 +101,11 @@ public class Individual {
 	// tells if this has better fitness than a rival towards a given formula
 	public boolean better_than( Individual rival, Formula formula) {
 		return this.fitness(formula) >= rival.fitness(formula);
+	}
+	
+	private void reset_fitness() {
+		this.last_fitness = 0;
+		this.last_formula = null;
 	}
 	
 	public int get_genes_count() {
