@@ -17,9 +17,9 @@ public class Main {
 		
 		
 		//GA test = new GA(Dataset.UF20,"uf20-0100.cnf",1000,1000,20,20);
-		GA test = new GA(Dataset.UF50,"uf50-01.cnf",1000,2000,25,20);
+		//GA test = new GA(Dataset.UF50,"uf50-01.cnf",1000,2000,25,20);
 		//GA test = new GA(Dataset.UUF50,"uuf50-0100.cnf",1000,2000,20,20);
-		//GA test = new GA(Dataset.UF75,"uf75-0100.cnf",1000,500,25,20);
+		GA test = new GA(Dataset.UF75,"uf75-0100.cnf",1000,2000,25,20);
 		//GA test = new GA(Dataset.UUF75,"uuf75-0100.cnf",1000,2000,20,20);
 		test.solve();
 		

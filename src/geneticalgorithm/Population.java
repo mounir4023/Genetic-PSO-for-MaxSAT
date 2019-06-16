@@ -54,7 +54,8 @@ public class Population implements Comparator<Individual> {
 			} else  fitness_rank++;
 		}
 		
-		if ( ! registered ) this.list.add(fitness_rank, new_born);	
+		if ( ! registered && fitness_rank < this.configuration.get_pop_size() ) 
+			this.list.add(fitness_rank, new_born);	
 	}
 	
 	private int evaluate (Individual individual ) {
@@ -78,13 +79,14 @@ public class Population implements Comparator<Individual> {
 		
 		System.out.println("/* SOCIAL DISASTER */");
 		
-		/* implementation 2 : randomize again all pop except the best 1 
+		/* implementation 2 : randomize again all pop except the best 1 */ 
 		Individual best = this.get_best().clone();
 		this.list = new ArrayList<Individual>();
 		this.init_population();
 		this.reorder();
+		this.top_five(configuration.get_formula());
 		this.register(best);
-		*/
+		this.top_five(configuration.get_formula());
 		
 		/* implementation 1 : get complete opposite of random elements (failed)
 		for ( int i = 0; i < configuration.get_pop_size() / 2; i++ ) {

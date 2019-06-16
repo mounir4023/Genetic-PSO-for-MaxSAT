@@ -96,7 +96,7 @@ public class GA {
 			this.population.top_five(this.formula);
 			System.out.println("\nbest fitness: "+best.fitness(formula));
 			System.out.println("\nindicator: "+stagnation_indicator);
-			try { Thread.sleep(333); } catch (InterruptedException e) { }
+			//try { Thread.sleep(333); } catch (InterruptedException e) { }
 			
 			// check if a solution was found, else repeat
 			if (this.population.get_best().fitness(this.formula) == this.dataset.get_nb_clauses())
