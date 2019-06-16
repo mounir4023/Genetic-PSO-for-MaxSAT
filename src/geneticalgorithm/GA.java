@@ -1,6 +1,7 @@
 package geneticalgorithm;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import cnfmanagement.CnfReader;
 import cnfmanagement.Dataset;
@@ -73,12 +74,12 @@ public class GA {
 				mutated.mutate();
 			}
 			
+			// sort the population after the mutations
+			this.population.reorder();
+			
 			// calculate standard deviation
 			// if premature convergence start the social disaster technique
 			// keep up few good samples and randomize all the others
-			
-			// sort the population after the mutations
-			this.population.reorder();
 			
 			// restore the best individual if it got worse due to some mutation
 			if ( this.population.get_best().better_than(best, formula) )
@@ -90,6 +91,10 @@ public class GA {
 			System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
 			this.population.top_five(this.formula);
 			System.out.println("\nbest fitness: "+best.fitness(formula));
+			System.out.println("\nstandard deviation: "+this.standard_deviation());
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) { }
 			
 			// check if a solution was found, else repeat
 			if (this.population.get_best().fitness(this.formula) == this.dataset.get_nb_clauses())
@@ -98,6 +103,27 @@ public class GA {
 				iteration++;
 			
 		}
+	}
+	
+	private double standard_deviation() {
+		
+		double sum = 0;
+		double mean = 0;
+		double var = 0;
+		double sd = 0;
+		
+		for (Individual i : this.population.get_list()) 	
+			sum += i.fitness(this.formula);
+		
+		mean = sum / this.pop_size;
+		
+		for (Individual i : this.population.get_list()) 	
+			var += ((i.fitness(this.formula) - mean ) * (i.fitness(this.formula) - mean ));
+		
+		var = var / this.pop_size;
+		sd = Math.sqrt(var);
+			
+		return sd;
 	}
 	
 	public int get_nb_vars() {
