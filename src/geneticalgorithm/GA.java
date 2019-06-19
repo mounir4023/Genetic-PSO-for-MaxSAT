@@ -12,8 +12,8 @@ public class GA {
 	private Dataset dataset;
 	private Formula formula;
 	private Population population;
+	private int max_iter;
 	private int pop_size;
-	private int max_iter; 
 	private int crossover_rate; 
 	private int mutation_rate;
 	
@@ -77,7 +77,7 @@ public class GA {
 			
 			// sort the population after the mutations
 			this.population.reorder();
-			
+					
 			// watch over premature convergence and handle population in case
 			stagnation_indicator = this.standard_deviation();
 			if ( stagnation_indicator < 1 ) 
@@ -96,7 +96,6 @@ public class GA {
 			this.population.top_five(this.formula);
 			System.out.println("\nbest fitness: "+best.fitness(formula));
 			System.out.println("\nindicator: "+stagnation_indicator);
-			//try { Thread.sleep(333); } catch (InterruptedException e) { }
 			
 			// check if a solution was found, else repeat
 			if (this.population.get_best().fitness(this.formula) == this.dataset.get_nb_clauses())
