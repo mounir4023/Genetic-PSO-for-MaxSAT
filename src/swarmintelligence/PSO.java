@@ -66,6 +66,8 @@ public class PSO {
 			if ( g_best.fitness(this.formula) == this.dataset.get_nb_clauses() )
 				solution = g_best;
 			
+			iteration ++;
+			
 			System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
 			System.out.println("\nbest fitness: "+g_best.fitness(formula));
 		}

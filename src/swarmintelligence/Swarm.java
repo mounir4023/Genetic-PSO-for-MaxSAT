@@ -21,6 +21,7 @@ public class Swarm {
 		for( int i=0; i < this.configuration.get_swarm_size() ; i++ ) {
 			
 			Particle particle = new Particle(this.configuration.get_dataset().get_nb_vars());
+			this.list.add(particle);
 		}
 	}
 	
