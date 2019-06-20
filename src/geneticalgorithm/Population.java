@@ -77,7 +77,7 @@ public class Population implements Comparator<Individual> {
 	
 	public void social_disaster() {
 		
-		System.out.println("/* SOCIAL DISASTER */");
+		//System.out.println("/* SOCIAL DISASTER */");
 		
 		/* implementation 2 : randomize again all pop except the best 1 */ 
 		Individual best = this.get_best().clone();
@@ -96,8 +96,8 @@ public class Population implements Comparator<Individual> {
 			this.list.get(index).punish();
 		}
 		*/
-		System.out.println("/* SOCIAL DISASTER */");
-		new java.util.Scanner(System.in).nextLine();
+		//System.out.println("/* SOCIAL DISASTER */");
+		//new java.util.Scanner(System.in).nextLine();
 	}
 	
 	public void reorder() {

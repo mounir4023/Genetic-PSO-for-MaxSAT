@@ -24,8 +24,6 @@ public class Particle {
 			position.add((int)(Math.round( Math.random() )));
 		
 		this.p_best = new Particle(this.copy_position());
-		
-		//System.out.println("velocity: "+this.velocity);
 	}
 	
 	// generates particle with given position for saving purposes 
@@ -57,18 +55,19 @@ public class Particle {
 		double gb_w = configuration.get_gb_w();
 		
 		this.velocity = (int) Math.round( cv_w * this.velocity + pb_w * pb_c * pb_d + gb_w * gb_c * gb_d ) ;
+		//this.velocity = (int) Math.round( this.velocity / (cv_w + pb_w + gb_w) );
 		
 		if ( this.velocity > configuration.get_max_vel() )
 			this.velocity = (int) Math.round( Math.random() * 5) + 5;
 		
-		//System.out.println("velocity: "+this.velocity);
+		//System.out.println("PB DIST:"+pb_d);
+		//System.out.println("GB DIST:"+gb_d);
+		//System.out.println("NEW VEL:"+this.velocity+"   /3 = "+this.velocity/3);
 	}
 	
 	// position at X(t+1) using V(t+1)
 	public void move( Formula formula) {
-		
-		Particle tmp = new Particle(this.position);
-		
+
 		for (int i = 0; i < this.velocity; i++) {
 			
 			Random generator = new Random();
@@ -78,9 +77,6 @@ public class Particle {
 		
 		if ( this.better_than(this.p_best, formula) )
 			this.p_best = new Particle(this.copy_position());
-		
-		System.out.println("\nV(t+1):"+this.velocity);
-		System.out.println("X(t+1) - X(t):"+this.distance_to(tmp, formula));
 	}
 	
 	// compare current position to a given position

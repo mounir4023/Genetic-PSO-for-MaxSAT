@@ -69,7 +69,7 @@ public class PSO {
 			iteration ++;
 			
 			System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
-			System.out.println("\nbest fitness: "+g_best.fitness(formula));
+			System.out.println("best fitness: "+g_best.fitness(formula));
 		}
 	}
 

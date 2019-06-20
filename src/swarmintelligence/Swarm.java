@@ -29,11 +29,9 @@ public class Swarm {
 		
 		Particle position = new Particle(this.list.get(0).get_position());
 		
-		for ( int i = 0; i < this.configuration.get_swarm_size(); i++ ) {
-			
+		for ( int i = 0; i < this.configuration.get_swarm_size(); i++ ) 	
 			if ( this.list.get(i).better_than(position,this.configuration.get_formula()) )
 				position = new Particle(this.list.get(0).get_position());
-		}
 		
 		return position;
 	}
