@@ -58,7 +58,7 @@ public class Particle {
 		//this.velocity = (int) Math.round( this.velocity / (cv_w + pb_w + gb_w) );
 		
 		if ( this.velocity > configuration.get_max_vel() )
-			this.velocity = (int) Math.round( Math.random() * 5) + 5;
+			this.velocity = 1; //(int) Math.round( Math.random() * 5) ;+ 5;
 		
 		//System.out.println("PB DIST:"+pb_d);
 		//System.out.println("GB DIST:"+gb_d);
