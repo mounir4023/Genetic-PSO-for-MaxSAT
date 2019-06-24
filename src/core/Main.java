@@ -28,25 +28,3 @@ public class Main {
 		test.solve();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		//PSO test = new PSO(Dataset.UF75,"uf75-0100.cnf",1000,2000,20,0.5,0.25,0.25);
-		//PSO test = new PSO(Dataset.UF50,"uf50-01.cnf",3,10,20,1,1,1);
-		
-		//GA test = new GA(Dataset.UUF50,"uuf50-0100.cnf",1000,2000,20,20);
-		//GA test = new GA(Dataset.UUF75,"uuf75-0100.cnf",1000,2000,20,20);
-		
-		//AStar AStarTest = new AStar(Dataset.UF50.get_path()+"/uf50-01.cnf",50);
-		//AStarTest.search();
