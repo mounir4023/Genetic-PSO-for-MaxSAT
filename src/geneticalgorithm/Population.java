@@ -84,9 +84,9 @@ public class Population implements Comparator<Individual> {
 		this.list = new ArrayList<Individual>();
 		this.init_population();
 		this.reorder();
-		this.top_five(configuration.get_formula());
+		//this.top_five(configuration.get_formula());
 		this.register(best);
-		this.top_five(configuration.get_formula());
+		//this.top_five(configuration.get_formula());
 		
 		/* implementation 1 : get complete opposite of random elements (failed)
 		for ( int i = 0; i < configuration.get_pop_size() / 2; i++ ) {

@@ -35,7 +35,7 @@ public class GA {
 		this.population.init_population();
 	}
 	
-	public void solve() {
+	public Individual solve() {
 		
 		// initialize the algorithm
 		int iteration = 0;
@@ -92,10 +92,10 @@ public class GA {
 				this.population.register(best);	
 			
 			// print iteration score
-			System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
-			this.population.top_five(this.formula);
-			System.out.println("\nbest fitness: "+best.fitness(formula));
-			System.out.println("\nindicator: "+stagnation_indicator);
+			//System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
+			//this.population.top_five(this.formula);
+			//System.out.println("\nbest fitness: "+best.fitness(formula));
+			//System.out.println("\nindicator: "+stagnation_indicator);
 			
 			// check if a solution was found, else repeat
 			if (this.population.get_best().fitness(this.formula) == this.dataset.get_nb_clauses())
@@ -103,6 +103,8 @@ public class GA {
 			else
 				iteration++;
 		}
+		
+		return best;
 	}
 	
 	private double standard_deviation() {

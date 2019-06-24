@@ -22,9 +22,12 @@ public class Main {
 		//GA test = new GA(Dataset.UF75,"uf75-01.cnf",1000,2000,25,20);
 		
 		//PSO test = new PSO(Dataset.UF20,"uf20-01.cnf",50,10000,20,2,3,5);
-		PSO test = new PSO(Dataset.UF50,"uf50-01.cnf",50,10000,20,2,3,5);
+		//PSO test = new PSO(Dataset.UF50,"uf50-01.cnf",50,10000,20,2,3,5);
 		//PSO test = new PSO(Dataset.UF75,"uf75-01.cnf",50,10000,20,2,3,5);
 		
-		test.solve();
+
+		PopSizeTuning test = new PopSizeTuning();
+		test.experiment();
+		test.show_results();
 	}
 }
