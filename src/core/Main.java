@@ -28,10 +28,10 @@ public class Main {
 		//PSO test = new PSO(Dataset.UF75,"uf75-01.cnf",50,10000,20,2,3,5);
 		
 
-		//PopSizeTuning test = new PopSizeTuning();
-		//test.experiment();
-		//test.show_results();
-		
+		PopSizeTuning test = new PopSizeTuning();
+		test.experiment();
+		test.show_results();
+		/*
 		Dataset dataset = Dataset.UF75;
 		Formula formula = new CnfReader(""+dataset.get_path()+"/"+"uf75-01.cnf").readFormula();
 		Formula formula2 = new CnfReader(""+dataset.get_path()+"/"+"uf75-02.cnf").readFormula();
@@ -44,5 +44,6 @@ public class Main {
 		System.out.println(tmp.fitness(formula));
 		System.out.println(tmp.fitness(formula3));
 		System.out.println(tmp.fitness(formula3));
+		*/
 	}
 }
