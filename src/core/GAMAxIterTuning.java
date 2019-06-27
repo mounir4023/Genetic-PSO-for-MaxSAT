@@ -8,15 +8,15 @@ import customdatastructures.Formula;
 import geneticalgorithm.GA;
 import geneticalgorithm.Individual;
 
-public class PopSizeTuning {
-
-	private int max_iter = 1500;
-	private int crossover_rate = 20;
+public class GAMAxIterTuning {
+	
+	private int pop_size = 500;
+	private int crossover_rate = 25;
 	private int mutation_rate = 20;
 	
-	private int pop_size[] =  { 50,100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,950,1000 };
-	private int max_fmax[] =  {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,   0 };
-	private int mean_fmax[] = {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,   0 };
+	private int max_iter[] =  { 500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000 };
+	private int max_fmax[] =  {   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,    0 };
+	private int mean_fmax[] = {   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,    0 };
 	
 	private Dataset dataset = Dataset.UF75;
 	private String files[] = { "uf75-0100.cnf", "uf75-02.cnf", "uf75-03.cnf", "uf75-04.cnf", "uf75-05.cnf",
@@ -25,7 +25,7 @@ public class PopSizeTuning {
 	
 	public void experiment() throws IOException {
 		
-		for ( int i = 0 ; i < pop_size.length ; i++ ) {
+		for ( int i = 0 ; i < max_iter.length ; i++ ) {
 			
 			int max_f = 0;
 			int mean_f = 0;
@@ -33,7 +33,7 @@ public class PopSizeTuning {
 			for ( int j = 0 ; j < 10; j++ ) {
 				
 				Formula formula = new CnfReader(""+dataset.get_path()+"/"+files[j]).readFormula();
-				GA test = new GA(dataset,files[j], pop_size[i], max_iter, crossover_rate, mutation_rate );
+				GA test = new GA(dataset,files[j], pop_size, max_iter[i], crossover_rate, mutation_rate );
 				Individual best = test.solve();
 				
 				int current_f = best.fitness(formula);
@@ -50,7 +50,8 @@ public class PopSizeTuning {
 	
 	public void show_results() {
 		
-		for (int i = 0; i < pop_size.length; i++ ) 
-			System.out.println(pop_size[i]+", "+max_fmax[i]+", "+mean_fmax[i]);
+		for (int i = 0; i < max_iter.length; i++ ) 
+			System.out.println(max_iter[i]+", "+max_fmax[i]+", "+mean_fmax[i]);
 	}
+
 }

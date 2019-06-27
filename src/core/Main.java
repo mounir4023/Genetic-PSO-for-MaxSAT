@@ -28,7 +28,7 @@ public class Main {
 		//PSO test = new PSO(Dataset.UF75,"uf75-01.cnf",50,10000,20,2,3,5);
 		
 
-		PopSizeTuning test = new PopSizeTuning();
+		CrossoverRateTuning test = new CrossoverRateTuning();
 		test.experiment();
 		test.show_results();
 		/*
