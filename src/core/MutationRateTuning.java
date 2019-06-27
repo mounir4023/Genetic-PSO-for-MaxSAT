@@ -10,13 +10,13 @@ import geneticalgorithm.Individual;
 
 public class MutationRateTuning {
 
-	private int max_iter = 500;
-	private int pop_size = 500;
-	private int crossover_rate = 20;
+	private int max_iter = 1500;
+	private int pop_size = 150;
+	private int crossover_rate = 10;
 	
-	private int mutation_rate[] =  { 5,10,15,20,25,30,35,40,45,50,55,60,65,70,7500,80,85,90,95,100 };
-	private int max_fmax[] =        { 0,  0,  0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	private int mean_fmax[] =       { 0,  0,  0,  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+	private int mutation_rate[] =  { 5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100 };
+	private int max_fmax[] =       { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0 };
+	private int mean_fmax[] =      { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0 };
 	
 	private Dataset dataset = Dataset.UF75;
 	private String files[] = { "uf75-0100.cnf", "uf75-02.cnf", "uf75-03.cnf", "uf75-04.cnf", "uf75-05.cnf",
