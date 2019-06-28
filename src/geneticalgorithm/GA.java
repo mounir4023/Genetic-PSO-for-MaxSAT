@@ -92,9 +92,9 @@ public class GA {
 				this.population.register(best);	
 			
 			// print iteration score
-			//System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
-			//this.population.top_five(this.formula);
-			//System.out.println("\nbest fitness: "+best.fitness(formula));
+			System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
+			this.population.top_five(this.formula);
+			System.out.println("\nbest fitness: "+best.fitness(formula));
 			//System.out.println("\nindicator: "+stagnation_indicator);
 			
 			// check if a solution was found, else repeat

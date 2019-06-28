@@ -42,7 +42,7 @@ public class PSO {
 		this.swarm.init_particles();
 	}
 	
-	public void solve() {
+	public Particle solve() {
 		
 		// initialize the algorithm
 		int iteration = 0;
@@ -71,6 +71,8 @@ public class PSO {
 			System.out.println("\n\n=========== Iteration: "+iteration+" ============\n");
 			System.out.println("best fitness: "+g_best.fitness(formula));
 		}
+		
+		return g_best;
 	}
 
 	public double get_cv_w() {
